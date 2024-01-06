@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sow Can You</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <style>
+            .modal {
+              display: none;
+              position: fixed;
+              z-index: 1;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              overflow: auto;
+              background-color: rgba(0, 0, 0, 0.5);
+            }
+        
+            .modal-content {
+              background-color: #fefefe;
+              margin: 15% auto;
+              padding: 20px;
+              border: 1px solid #888;
+              width: 80%;
+              text-align: justify; 
+              font-family: 'Didot', serif; 
+            }
+        
+            .modal-heading {
+              font-size: 24px;
+              margin-bottom: 10px;
+              font-weight: bold;
+              text-align: center;
+            }
+        
+            .modal-source {
+              font-size: 15px;
+              color: #555;
+              margin-top: 15px;
+            }
+        
+            .close {
+              color: #aaa;
+              float: right;
+              font-size: 28px;
+              font-weight: bold;
+            }
+        
+            .close:hover,
+            .close:focus {
+              color: black;
+              text-decoration: none;
+              cursor: pointer;
+            }
+
+            .image-container {
+              display: inline-block;
+              margin: 10px;
+            }
+
+            .modal-image {
+              max-width: 100%;
+              height: auto;
+              margin: 0 auto 15px;
+              display: block; 
+            }
+
+            .modal-content p {
+              margin-bottom: 10px; 
+            }
+          </style>
+    </head>
+
+    <body>
+        <header id="body-header">
+            <nav>
+                <div class = "dropdown-menu text-right">
+                    <div class="bars">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class ="dropdown-list nav-menu">
+                        <ul class = "no-list-style">
+                            <li >
+                                <a href="#"> Home </a>
+                            </li>
+                            <li>
+                                <a href="#about">About</a>
+                            </li>
+                            <li>
+                                <a href="#stories">Stories</a>
+                            </li>
+                            <li>
+                                <a href="#contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <ul class="no-list-style horizontal-list text-center nav-menu">
+                    <li>
+                        <a href="#"> Home </a>
+                    </li>
+                    <li>
+                        <a href="#about"> About </a>
+                    </li>
+                    <li>
+                        <a href="#stories"> Stories </a>
+                    </li>
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </nav> 
+            <div id="name-social-container">
+                <div class="text-center">
+                    <h1 id="my-name">Sow Can You</h1>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section id="about">
+                <div id="my-image">
+                    <img src="Logo.jpeg">
+                </div>
+                <h1>ABOUT</h1>
+                <div id="about-para">
+                    <p>
+                        Sow Can You is a <span class = "text-highlight">non-profit project</span> started by a <span class = "text-highlight"> 12th grader from the United States</span> in hopes of effecting change in the Indian agricultural community. The aim of this website is to persuade farmers to <span class = "text-highlight">transition to more natural, organic farming methods</span> through the power of communication and example.
+                    </p>
+                </div>
+            </section>
+
+            <section id="stories">
+                <h1 class="section-heading mb75px">
+                    <span>
+                        <i class="fas fa-th-list"></i>
+                    </span>
+                    <span>STORIES</span>
+                </h1>
+    
+                <div id="portfolio-container">
+                    <div class="portfolio-image-container">
+                        <a href="#" onclick="openModal('story1')"> 
+                            <img src="swarn.png" alt="Story 1 Thumbnail">
+                        </a>
+                    </div>
+                    <div class="portfolio-image-container">
+                        <a href="#" onclick="openModal('story2')"> 
+                            <img src="sikkim.png" alt="Story 1 Thumbnail">
+                        </a>
+                    </div>
+                    <div class="portfolio-image-container">
+                        <a href="#" onclick="openModal('story3')"> 
+                            <img src="salad.png" alt="Story 1 Thumbnail">
+                        </a>
+                    </div>
+                    <div class="portfolio-image-container">
+                        <a href="#" onclick="openModal('story4')"> 
+                            <img src="vivek-card2.png" alt="Story 1 Thumbnail">
+                        </a>
+                    </div>
+                    <div class="portfolio-image-container">
+                        <a href="#" onclick="openModal('story5')"> 
+                            <img src="ferti.png" alt="Story 1 Thumbnail">
+                        </a>
+                    </div>
+
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                          <span class="close" onclick="closeModal()">&times;</span>
+                          <div class="modal-heading" id="modalHeading"></div>
+                          <img class="modal-image" src="" alt="Story Image" id="modalImage">
+                          <div id="modalContent"></div>
+                          <div class="modal-source" id="modalSource"></div>
+                        </div>
+                    </div>
+                    
+                    <script>
+                        var modal = document.getElementById('myModal');
+                        function openModal(storyId) {
+                            modal.style.display = 'block';
+
+                            var storyContent;
+                            var storyImgSrc;
+                            var storyHeading;
+                            var storySrc;
+
+                            switch (storyId) {
+                                case 'story1':
+                                    storyHeading = "Swarn Singh"
+                                    storyContent = "<p>Swarn Singh has been farming in the village of Karamgarh, Punjab since the Green Revolution with his family on a plot of 6 acre land. In an interview with Kheti Virasat Mission (KVM), he revealed that like everyone else, he had been using chemicals on his crops since 1968 up until 2002, when he decided to switch to organic farming. He switched because the pests meant to be eradicated by the chemicals were still harming his crops, and also because the harmful chemicals led to intestinal cancer in his mother. So, with the help of KVM, he transformed 2 of the 6 acres to grow all natural cotton, guar, vegetables, and fodder for the cows.</p><p> At the beginning of his farming life he found the dangers of chemicals to be much more revolutionary than their yields. He revealed that yields increased from 32 quintals to 40. He tried different farming methods with his brother however, their sharecropper did not want to let go of the “increased yield”.</p><p> Now, after 21 years of farming naturally, he reflects that the input is very minimal and he is earning the same amount of money as he did while he was using chemical fertilizers. The biggest challenge he says is finding labor. It is difficult to find labor willing to work with cow dung. At the beginning of his transition he was constantly criticized by other villagers, however, now that their yields are decreasing and inputs are increasing, they are actively reaching out to him to also go all natural.</p>";
+                                    storySrc = '<a href="https://khetivirasatmission.org/organicfarmers/swarnsingh/" target="_blank">Link to Full Story</a>';
+                                    storyImgSrc = "swarn.png";
+                                    break;
+                                case 'story2':
+                                    storyHeading = "India’s First All Organic State: Sikkim"
+                                    storyContent = "<p>Sikkim was identified as the world’s first all organic state by World Book of Records London. To make Sikkim an organic state, the state’s government promoted the idea of organic instead of chemicals and made it against the law to use chemical fertilizers, pesticides, etc. Additionally, they established a punishment of imprisonment and fine if the law was to be violated. It took the state 13 long and difficult years to convert itself to all organic, however, once they did in 2016, they noticed an increase in more than 22 lakh hectares of production. In addition to its agricultural benefits, the state has seen significant improvements in its water quality as well as tourism. The population of Sikkim now no longer fears the detrimental effects of agrichemicals and experiences a boost in its economy through the alleviated tourism. The state has been recognized and awarded for its hard work by many international organizations and countries including the United States, and the members of the United Nations (UN).</p>";
+                                    storySrc = '<a href="https://www.indiatimes.com/explainers/news/how-sikkim-became-worlds-first-organic-state-572280.html/" target="_blank">Link to Full Story</a>'
+                                    storyImgSrc = "sikkim.png";
+                                    break;
+                                case 'story3':
+                                    storyHeading = "India’s Youngest Organic Farmer"
+                                    storyContent = "<p>Janardan Khorate, also famously known as Saladbaba, was born in Goa and left home at 16 years of age to study economics and later earn an MBA. He received guidance from David Gower and his wife Michaela Klemen, owners of Ambrosia Organic Farm, regarding successful business strategies and then handed over Ambrosia to Janardan in 2008. Janardan alleviated the farm's worth from 10 lakh to 4 crore rupees and is currently retired at the age of 32. Throughout his ownership of the brand, Janardan created many award winning organic products which earned him the name Saladbaba. He looks back and enjoys the time he used to farm. He says in an interview for The Indian News Express “Very often I saw people complain about how organic food is expensive, but it's not true. When you have your farm, it's not expensive. I never bought vegetables my entire life because they were free; from my farm. If you know how to make compost, then it becomes so affordable.”</p>";
+                                    storySrc = '<a href="https://www.newindianexpress.com/lifestyle/2022/may/27/from-rags-to-riches-janardan-khorate-aka-saladbabas-heartening-story-2458386.html/" target="_blank">Link to Full Story</a>';
+                                    storyImgSrc = "salad.png";
+                                    break;
+                                case 'story4':
+                                    storyHeading = "Brinda & Vivek Shah"
+                                    storyContent = "<p>Brinda Shah and her husband Vivek Shah were both living in Silicon Valley, California before they decided to go back to India and start their own organic “food forest” in Gujarat. Before returning to India, they completed a permaculture course to learn how to keep an eco-friendly farm sustainable. They avoid using chemical fertilizers and herbicides and instead use methods like multi cropping and intercropping to keep harmful pests away and promote healthy soil composition. They plant basil and lemongrass to keep insects away and use all of their farm waste as manure for fertilization. In six years they transformed an empty piece of land into a mixture of commercial and experimental farming. They currently grow organic fruits, vegetables, and other miscellaneous crops.</p>";
+                                    storySrc = '<a href="https://www.globalindian.com/story/environment-entrepreneur/forest-farm-calling-how-vivek-and-brinda-shah-quit-us-job-to-become-environment-entrepreneurs/" target="_blank">Link to Full Story</a>';
+                                    storyImgSrc = "vivek-card2.png";
+                                    break;
+                                case 'story5':
+                                    storyHeading = "Farmers of Bhawanipur"
+                                    storyContent = "<p>The farmers of Bhawanipur, Uttar Pradesh have spent the past decade shifting to organic means of farming. Unexpected severe weather conditions brought up the problems with modern chemical cultivation methodologies. The community noticed signs of desertification in their soil and a decrease in their yields. So, they began their journey to go natural. They started producing organic fertilizers and pesticides based on indigenous knowledge using materials readily available to them: cow dung, pulse flower, neem paste, and animal urine.</p><p>After switching to organic farming, the community has seen many improvements in their finances as well as their soil. Before shifting, a majority of the farmers’ expenses included buying fertilizers and herbicides and the travel fees to acquire these fertilizers and herbicides. Additionally, they noticed an increase in the quality of their food. The flavor and scents of the foods were enhanced.</p>";
+                                    storySrc = '<a href="https://www.oneearth.org/indias-organic-farmers-are-reducing-the-countrys-global-emissions/" target="_blank">Link to Full Story</a>';
+                                    storyImgSrc = "ferti.png";
+                                    break;
+                            }
+
+                            document.getElementById('modalContent').innerHTML = storyContent;
+                            document.getElementById('modalImage').src = storyImgSrc;
+                            document.getElementById('modalSource').innerHTML = storySrc;
+                            document.querySelector('.modal-heading').innerText = storyHeading;
+                        }
+
+                        function closeModal() {
+                            modal.style.display = 'none';
+                        }
+  
+                        window.onclick = function(event) {
+                            if (event.target == modal) {
+                                modal.style.display = 'none';
+                            }
+                        }
+                    </script>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h1 class="section-heading mb50px">
+                    <span>
+                        <i class="far fa-address-card"></i>
+                    </span>
+                    <span>Contact</span>
+                </h1>
+                
+                <div id="contact-container">
+                    <div id="my-details-container">
+                        <h5>Have you recently or in the past shifted from chemical farming to natural farming? Did these stories feel empowering? Do you want to add your own story here to inspire other farmers? Contact us below so that you too can help transform the future of India by sharing your story or providing feedback about this website.</h5>
+                        <h3>Our Address</h3>
+                        <div class="my-details-info-container">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Chicago, United States</span>
+                        </div>
+                        <div class="my-details-info-container">
+                            <i class="far fa-envelope"></i>
+                            <span>sowcanyou@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+    
+            </section>
+        </main>
+    </body>
+</html>
