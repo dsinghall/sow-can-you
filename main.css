@@ -70,7 +70,7 @@ body::-webkit-scrollbar {
 
 .no-list-style li a{
     list-style: none;
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
